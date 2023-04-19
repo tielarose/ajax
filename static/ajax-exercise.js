@@ -37,7 +37,6 @@ document.querySelector("#weather-form").addEventListener("submit", showWeather);
 function orderMelons(evt) {
   evt.preventDefault();
 
-  // TODO: show the result message after your form
   const formInputs = {
     qty: document.querySelector("#qty-field").value,
     melon_type: document.querySelector("#melon-type-field").value
@@ -57,9 +56,23 @@ function orderMelons(evt) {
       } else {
         document.querySelector("#order-status").classList.remove("order-error");
       }
-      document.querySelector("#order-status").innerHTML = responseJson.msg;
+      document.querySelector("#order-status").innerHTML = `<p>${
+        responseJson.msg
+      }</p>`;
     });
-
-  // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
 }
 document.querySelector("#order-form").addEventListener("submit", orderMelons);
+
+function getDogImg(evt) {
+  evt.preventDefault();
+
+  fetch("https://dog.ceo/api/breeds/image/random")
+    .then((response) => response.json())
+    .then((responseData) => {
+      document.querySelector("#display-dog-image").innerHTML = `<img src=${
+        responseData.message
+      } alt="this is a cute dog photo">`;
+    });
+}
+
+document.querySelector("#get-dog-image").addEventListener("click", getDogImg);

@@ -14,3 +14,11 @@ h2 {
   /* use this if an ERROR code was returned */
   color: red;
 }
+
+#display-dog-image img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  object-fit: cover;
+}
